@@ -11,7 +11,7 @@ function summary(data) {
         "nR": format.number(data.Global.NewRecovered),
         "tR": format.number(data.Global.TotalRecovered),
         "CC": "WORLD",
-        "updated": moment().format('LLLL')
+        "updated": moment().format('ll')
     }
 }
 

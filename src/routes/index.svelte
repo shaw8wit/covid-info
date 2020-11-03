@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<Stat />
+<Stat {...summary} />
 
 <Chart />
 

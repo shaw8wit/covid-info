@@ -1,5 +1,6 @@
 <script context="module">
     import countryNames from "../data/countryNames.js";
+    import requests from "../data/requests.js";
 
     export async function preload(page) {
         let country = page.params["country"];
@@ -10,7 +11,8 @@
         }
 
         try {
-            return { country: page.params["country"] };
+            const stats = await requests.countryStats(country);
+            return { country, stats };
         } catch (e) {
             this.error(500, e);
         }
@@ -22,6 +24,7 @@
     import Chart from "../components/Chart.svelte";
     import TableContainer from "../components/TableContainer.svelte";
     export let country;
+    export let stats;
 </script>
 
 <svelte:head>
@@ -34,6 +37,6 @@
     </div>
 </div>
 
-<Stat />
+<Stat {...stats} />
 
 <Chart />

@@ -7,6 +7,13 @@ async function summary() {
     return parsers.summary(response.data);
 }
 
+async function countryStats(country) {
+    const response = await axios.get('https://api.covid19api.com/summary');
+
+    return parsers.countryStats(country, response.data);
+}
+
 export default {
     summary,
+    countryStats,
 };

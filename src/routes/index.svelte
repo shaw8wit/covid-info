@@ -5,7 +5,9 @@
         try {
             const summary = await requests.summary();
             return { summary };
-        } catch (e) {}
+        } catch (e) {
+            this.error(500, e);
+        }
     }
 </script>
 
@@ -15,7 +17,6 @@
     import TableContainer from "../components/TableContainer.svelte";
 
     export let summary;
-    console.log(summary, "summary");
 </script>
 
 <svelte:head>

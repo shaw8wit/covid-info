@@ -1,6 +1,19 @@
 <script context="module">
+    import countryNames from "../data/countryNames.js";
+
     export async function preload(page) {
-        return { country: page.params["country"] };
+        let country = page.params["country"];
+
+        if (countryNames.find((s) => s.Slug === country) === undefined) {
+            this.error(404, "Country not found!");
+            return;
+        }
+
+        try {
+            return { country: page.params["country"] };
+        } catch (e) {
+            this.error(500, e);
+        }
     }
 </script>
 

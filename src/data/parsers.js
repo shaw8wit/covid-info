@@ -33,7 +33,7 @@ function historicWorld(historicData) {
     return [{
             label: 'Confirmed',
             key: 'TotalConfirmed',
-            color: 'rgb(100, 0, 200)',
+            color: 'rgb(100, 100, 200)',
         },
         {
             label: 'Recovered',
@@ -43,14 +43,19 @@ function historicWorld(historicData) {
         {
             label: 'Deaths',
             key: 'TotalDeaths',
-            color: 'rgb(100, 0, 200)',
+            color: 'rgb(200, 100, 200)',
         },
         {
             label: 'Active',
             key: 'CalculateActive',
-            color: 'rgb(100, 0, 200)',
+            color: 'rgb(10, 30, 100)',
         },
-    ]
+    ].reduce((prev, next) => {
+        if (historicData.filter(d => d[next.key] !== null).length > 4) {
+            prev.push(parseChart(historicData, next.key, next.label, next.color));
+        }
+        return prev;
+    }, []);
 }
 
 function parseChart(historicData, key, label, color) {
@@ -60,7 +65,7 @@ function parseChart(historicData, key, label, color) {
         d.setDate(d.getDate() + 1);
         return {
             x: d.toDateString(),
-            y: data[key],
+            y: (key === 'CalculateActive') ? data['TotalConfirmed'] - data['TotalRecovered'] - data['TotalDeaths'] : data[key] || 0,
         }
     });
     return {

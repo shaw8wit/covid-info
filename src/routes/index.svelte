@@ -4,7 +4,8 @@
     export async function preload() {
         try {
             const summary = await requests.summary();
-            return { summary };
+            const historic = await requests.historicWorld();
+            return { summary, historic };
         } catch (e) {
             this.error(500, e);
         }
@@ -17,6 +18,8 @@
     import TableContainer from "../components/TableContainer.svelte";
 
     export let summary;
+    export let historic;
+    console.log(historic, "historic");
 </script>
 
 <svelte:head>

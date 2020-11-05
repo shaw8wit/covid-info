@@ -13,7 +13,14 @@ async function countryStats(country) {
     return parsers.countryStats(country, response.data);
 }
 
+async function historicWorld() {
+    const response = await axios.get('https://api.covid19api.com/world');
+
+    return parsers.historicWorld(response.data);
+}
+
 export default {
     summary,
     countryStats,
+    historicWorld,
 };

@@ -39,7 +39,9 @@
 <div class="section">
     <div class="container">
         <div class="columns">
-            <h3 class="is-3 column">Time :<br /><strong>{updated}</strong></h3>
+            <h3 class="is-3 column">
+                Updated :<br /><strong>{updated}</strong>
+            </h3>
             <h3 class="is-3 column">
                 New Confirmed :<br /><strong>{nC}</strong>
             </h3>

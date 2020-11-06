@@ -19,7 +19,6 @@
 
     export let summary;
     export let historic;
-    console.log(historic, "historic");
 </script>
 
 <svelte:head>
@@ -34,6 +33,6 @@
 
 <Stat {...summary} />
 
-<Chart />
+<Chart historicData={historic} title="world" />
 
 <TableContainer />

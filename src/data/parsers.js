@@ -11,7 +11,7 @@ function summary(data) {
         "nR": format.number(raw.NewRecovered),
         "tR": format.number(raw.TotalRecovered),
         "CC": "WORLD",
-        "updated": moment(data.Date).format('LL')
+        "updated": moment(data.Date).format('ll')
     }
 }
 
@@ -25,30 +25,30 @@ function countryStats(country, data) {
         "nR": format.number(countryRawData.NewRecovered),
         "tR": format.number(countryRawData.TotalRecovered),
         "CC": countryRawData.CountryCode,
-        "updated": moment(countryRawData.Date).format('LL')
+        "updated": moment(countryRawData.Date).format('ll')
     }
 }
 
 function historicWorld(historicData) {
     return [{
             label: 'Confirmed',
-            key: 'TotalConfirmed',
-            color: 'rgb(100, 100, 200)',
+            key: 'NewConfirmed',
+            color: 'rgb(40, 40, 40)',
         },
         {
             label: 'Recovered',
-            key: 'TotalRecovered',
-            color: 'rgb(100, 0, 200)',
+            key: 'NewRecovered',
+            color: 'rgb(40, 200, 40)',
         },
         {
             label: 'Deaths',
-            key: 'TotalDeaths',
-            color: 'rgb(200, 100, 200)',
+            key: 'NewDeaths',
+            color: 'rgb(200, 40, 40)',
         },
         {
             label: 'Active',
-            key: 'CalculateActive',
-            color: 'rgb(10, 30, 100)',
+            key: 'TotalConfirmed',
+            color: 'rgb(40, 40, 200)',
         },
     ].reduce((prev, next) => {
         if (historicData.filter(d => d[next.key] !== null).length > 4) {
@@ -60,12 +60,18 @@ function historicWorld(historicData) {
 
 function parseChart(historicData, key, label, color) {
     let d = new Date();
+    let prev = 0,
+        temp;
     d.setDate(d.getDate() - historicData.length);
     const chartData = historicData.map(data => {
         d.setDate(d.getDate() + 1);
+        temp = (key === 'TotalConfirmed') ? data['NewConfirmed'] - data['NewRecovered'] - data['NewDeaths'] : data[key];
+        if (Math.abs(temp) < 4500000) {
+            prev += temp;
+        }
         return {
             x: d.toDateString(),
-            y: (key === 'CalculateActive') ? data['TotalConfirmed'] - data['TotalRecovered'] - data['TotalDeaths'] : data[key] || 0,
+            y: prev,
         }
     });
     return {

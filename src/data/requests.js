@@ -19,8 +19,15 @@ async function historicWorld() {
     return parsers.historicWorld(response.data);
 }
 
+async function historicCountry(country) {
+    const response = await axios.get(`https://api.covid19api.com/dayone/country/${country}`);
+
+    return parsers.historicCountry(response.data);
+}
+
 export default {
     summary,
     countryStats,
     historicWorld,
+    historicCountry,
 };

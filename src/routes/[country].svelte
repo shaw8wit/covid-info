@@ -12,7 +12,8 @@
 
         try {
             const stats = await requests.countryStats(country);
-            return { country, stats };
+            const historic = await requests.historicCountry(country);
+            return { country, stats, historic };
         } catch (e) {
             this.error(500, e);
         }
@@ -25,6 +26,7 @@
     import TableContainer from "../components/TableContainer.svelte";
     export let country;
     export let stats;
+    export let historic;
 </script>
 
 <svelte:head>
@@ -33,10 +35,10 @@
 
 <div class="section header">
     <div class="container">
-        <h1>Covid 19 - {country}</h1>
+        <h1>Covid 19 - {country.charAt(0).toUpperCase() + country.slice(1)}</h1>
     </div>
 </div>
 
 <Stat {...stats} />
 
-<Chart />
+<Chart historicData={historic} title="Covid 19 - {country}" />

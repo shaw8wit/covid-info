@@ -8,10 +8,8 @@
 </script>
 
 <style>
-	@media (min-width: 700px) {
-		nav {
-			border-bottom: solid grey 1px;
-		}
+	nav {
+		border-bottom: solid grey 1px;
 	}
 </style>
 

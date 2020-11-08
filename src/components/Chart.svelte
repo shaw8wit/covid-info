@@ -55,7 +55,7 @@
                                 tooltipFormat: "ll",
                             },
                             scaleLabel: {
-                                displayy: true,
+                                display: true,
                                 labelString: "D",
                             },
                         },
@@ -66,7 +66,7 @@
                                 display: true,
                             },
                             ticks: {
-                                beginAtZero: true,
+                                beginAtZero: false,
                                 userCallback: function (value, index, values) {
                                     return value.toLocaleString();
                                 },

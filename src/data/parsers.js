@@ -82,8 +82,53 @@ function parseChart(historicData, key, label, color) {
     }
 }
 
+function parseCountryChart(historicData, key, label, color) {
+    const chartData = historicData.map(data => {
+        return {
+            x: moment(data['Date']).format('ll'),
+            y: data[key],
+        }
+    });
+    return {
+        label,
+        data: chartData,
+        fill: false,
+        borderColor: color,
+    }
+}
+
+function historicCountry(data) {
+    return [{
+            label: 'Confirmed',
+            key: 'Confirmed',
+            color: 'rgb(40, 40, 40)',
+        },
+        {
+            label: 'Recovered',
+            key: 'Recovered',
+            color: 'rgb(40, 200, 40)',
+        },
+        {
+            label: 'Deaths',
+            key: 'Deaths',
+            color: 'rgb(200, 40, 40)',
+        },
+        {
+            label: 'Active',
+            key: 'Active',
+            color: 'rgb(40, 40, 200)',
+        },
+    ].reduce((prev, next) => {
+        if (data.filter(d => d[next.key] !== null).length > 4) {
+            prev.push(parseCountryChart(data, next.key, next.label, next.color));
+        }
+        return prev;
+    }, []);
+}
+
 export default {
     summary,
     countryStats,
     historicWorld,
+    historicCountry,
 };

@@ -10,22 +10,22 @@ function summary(data) {
         "tD": format.number(raw.TotalDeaths),
         "nR": format.number(raw.NewRecovered),
         "tR": format.number(raw.TotalRecovered),
-        "CC": "WORLD",
+        "CC": format.number(raw.TotalConfirmed - raw.TotalDeaths - raw.TotalRecovered),
         "updated": moment(data.Date).format('ll')
     }
 }
 
 function countryStats(country, data) {
-    const countryRawData = data.Countries.find((d) => d.Slug === country);
+    const r = data.Countries.find((d) => d.Slug === country);
     return {
-        "nC": format.number(countryRawData.NewConfirmed),
-        "tC": format.number(countryRawData.TotalConfirmed),
-        "nD": format.number(countryRawData.NewDeaths),
-        "tD": format.number(countryRawData.TotalDeaths),
-        "nR": format.number(countryRawData.NewRecovered),
-        "tR": format.number(countryRawData.TotalRecovered),
-        "CC": countryRawData.CountryCode,
-        "updated": moment(countryRawData.Date).format('ll')
+        "nC": format.number(r.NewConfirmed),
+        "tC": format.number(r.TotalConfirmed),
+        "nD": format.number(r.NewDeaths),
+        "tD": format.number(r.TotalDeaths),
+        "nR": format.number(r.NewRecovered),
+        "tR": format.number(r.TotalRecovered),
+        "CC": format.number(r.TotalConfirmed - r.TotalDeaths - r.TotalRecovered),
+        "updated": moment(r.Date).format('ll')
     }
 }
 
@@ -126,9 +126,23 @@ function historicCountry(data) {
     }, []);
 }
 
+function countryTable(data) {
+    return data.Countries.map(d => {
+        return {
+            cases: format.number(d.TotalConfirmed),
+            deaths: format.number(d.TotalDeaths),
+            recovered: format.number(d.TotalRecovered),
+            active: format.number(d.TotalConfirmed - d.TotalDeaths - d.TotalRecovered),
+            countryName: d.Country,
+            countrySlug: d.Slug,
+        }
+    })
+}
+
 export default {
     summary,
     countryStats,
     historicWorld,
     historicCountry,
+    countryTable,
 };

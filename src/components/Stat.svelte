@@ -20,9 +20,7 @@
 <div class="section">
     <div class="container">
         <div class="columns">
-            <h3 class="is-3 column">
-                Country Code :<br /><strong>{CC}</strong>
-            </h3>
+            <h3 class="is-3 column">Active :<br /><strong>{CC}</strong></h3>
             <h3 class="is-3 column">
                 Total Confirmed :<br /><strong>{tC}</strong>
             </h3>

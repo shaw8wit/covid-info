@@ -5,7 +5,8 @@
         try {
             const summary = await requests.summary();
             const historic = await requests.historicWorld();
-            return { summary, historic };
+            const countryData = await requests.countryData();
+            return { summary, historic, countryData };
         } catch (e) {
             this.error(500, e);
         }
@@ -19,6 +20,8 @@
 
     export let summary;
     export let historic;
+    export let countryData;
+    console.log(countryData, "countryData");
 </script>
 
 <svelte:head>

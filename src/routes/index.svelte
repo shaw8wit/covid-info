@@ -21,7 +21,6 @@
     export let summary;
     export let historic;
     export let countryData;
-    console.log(countryData, "countryData");
 </script>
 
 <svelte:head>
@@ -38,4 +37,4 @@
 
 <Chart historicData={historic} title="world" />
 
-<TableContainer />
+<TableContainer data={countryData} />

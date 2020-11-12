@@ -4,9 +4,31 @@
 
     export let data;
 
-    $: country = data;
+    let sortBy = "name";
+    let countryName = "";
+
+    $: country = filterAndSort(data, countryName, sortBy);
+
+    function filterAndSort(countries, countryName, sortBy) {
+        const filteredCountry = countries.filter((c) => {
+            return (
+                countryName === "" ||
+                c.countrySlug.indexOf(countryName.toLowerCase()) > -1
+            );
+        });
+
+        if (sortBy != "name") {
+            return filteredCountry.sort((a, b) => {
+                return (
+                    +b[sortBy].replace(",", "") - +a[sortBy].replace(",", "")
+                );
+            });
+        }
+
+        return filteredCountry;
+    }
 </script>
 
-<TableFilter />
+<TableFilter bind:countryName bind:sortBy />
 
 <Table {country} />

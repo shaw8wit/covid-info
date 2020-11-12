@@ -129,10 +129,10 @@ function historicCountry(data) {
 function countryTable(data) {
     return data.Countries.map(d => {
         return {
-            cases: format.number(d.TotalConfirmed),
-            deaths: format.number(d.TotalDeaths),
-            recovered: format.number(d.TotalRecovered),
-            active: format.number(d.TotalConfirmed - d.TotalDeaths - d.TotalRecovered),
+            cases: d.TotalConfirmed,
+            deaths: d.TotalDeaths,
+            recovered: d.TotalRecovered,
+            active: d.TotalConfirmed - d.TotalDeaths - d.TotalRecovered,
             countryName: d.Country,
             countrySlug: d.Slug,
         }

@@ -19,9 +19,7 @@
 
         if (sortBy != "name") {
             return filteredCountry.sort((a, b) => {
-                return (
-                    +b[sortBy].replace(",", "") - +a[sortBy].replace(",", "")
-                );
+                return +b[sortBy] - +a[sortBy];
             });
         }
 

@@ -4,7 +4,7 @@
 
 <div class="section header">
     <div class="container">
-        <h1>About</h1>
+        <h1 class="my-5">About</h1>
         <p>
             The data for this project came from:
             <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc">

@@ -1,4 +1,6 @@
 <script>
+    import f from "../data/format";
+
     export let country;
 </script>
 
@@ -12,7 +14,7 @@
     }
 </style>
 
-<div class="section">
+<div class="section mb-6">
     <div class="container">
         <table class="table is-bordered is-striped">
             <thead>
@@ -28,10 +30,10 @@
                 {#each country as c (c.countrySlug)}
                     <tr>
                         <td><a href={c.countrySlug}>{c.countryName}</a></td>
-                        <td>{c.active}</td>
-                        <td>{c.cases}</td>
-                        <td>{c.recovered}</td>
-                        <td>{c.deaths}</td>
+                        <td>{f.number(c.active)}</td>
+                        <td>{f.number(c.cases)}</td>
+                        <td>{f.number(c.recovered)}</td>
+                        <td>{f.number(c.deaths)}</td>
                     </tr>
                 {/each}
             </tbody>

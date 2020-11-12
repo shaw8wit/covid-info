@@ -80,5 +80,5 @@
 </script>
 
 {#if !hideChart}
-    <div class="container"><canvas bind:this={chartElement} /></div>
+    <div class="container mt-4"><canvas bind:this={chartElement} /></div>
 {/if}

@@ -15,7 +15,7 @@
     }
 </style>
 
-<div class="section">
+<div class="section mt-2">
     <div class="container">
         <div class="columns">
             <div class="column is-6">
@@ -29,10 +29,10 @@
                 <div class="select">
                     <select bind:value={sortBy}>
                         <option value="name">By Country Name</option>
-                        <option value="cases">Cases</option>
-                        <option value="deaths">Death</option>
-                        <option value="recovered">Recovered</option>
                         <option value="active">Active</option>
+                        <option value="cases">Cases</option>
+                        <option value="recovered">Recovered</option>
+                        <option value="deaths">Death</option>
                     </select>
                 </div>
             </div>

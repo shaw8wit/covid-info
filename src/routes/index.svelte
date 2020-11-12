@@ -27,7 +27,7 @@
     <title>Covid Tracker Info</title>
 </svelte:head>
 
-<div class="section header">
+<div class="section header mt-5">
     <div class="container">
         <h1>Covid 19 - World</h1>
     </div>

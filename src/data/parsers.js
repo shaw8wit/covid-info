@@ -71,7 +71,7 @@ function parseChart(historicData, key, label, color) {
         }
         return {
             x: d.toDateString(),
-            y: prev,
+            y: Math.max(prev, 0),
         }
     });
     return {

@@ -29,7 +29,11 @@
             <tbody>
                 {#each country as c (c.countrySlug)}
                     <tr>
-                        <td><a href={c.countrySlug}>{c.countryName}</a></td>
+                        <td>
+                            <a rel="prefetch" href={c.countrySlug}>
+                                {c.countryName}
+                            </a>
+                        </td>
                         <td>{f.number(c.active)}</td>
                         <td>{f.number(c.cases)}</td>
                         <td>{f.number(c.recovered)}</td>

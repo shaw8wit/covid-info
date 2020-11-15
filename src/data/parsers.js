@@ -11,7 +11,7 @@ function summary(data) {
         "nR": format.number(raw.NewRecovered),
         "tR": format.number(raw.TotalRecovered),
         "CC": format.number(raw.TotalConfirmed - raw.TotalDeaths - raw.TotalRecovered),
-        "updated": moment(data.Date).format('ll')
+        "updated": moment(data.Date).format('LT')
     }
 }
 
@@ -25,7 +25,7 @@ function countryStats(country, data) {
         "nR": format.number(r.NewRecovered),
         "tR": format.number(r.TotalRecovered),
         "CC": format.number(r.TotalConfirmed - r.TotalDeaths - r.TotalRecovered),
-        "updated": moment(r.Date).format('ll')
+        "updated": moment(r.Date).format('LT')
     }
 }
 
@@ -85,7 +85,7 @@ function parseChart(historicData, key, label, color) {
 function parseCountryChart(historicData, key, label, color) {
     const chartData = historicData.map(data => {
         return {
-            x: moment(data['Date']).format('ll'),
+            x: moment(data['Date']).format('LL'),
             y: data[key],
         }
     });

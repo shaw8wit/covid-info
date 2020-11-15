@@ -16,7 +16,7 @@
 
 <nav class="navbar" role="navigation" aria-label="main-navigation">
 	<div class="navbar-brand">
-		<a href="/" class="navbar-item px-5">
+		<a ref="prefetch" href="/" class="navbar-item px-5">
 			<img src="covid-logo.jpeg" alt="Covid-Logo" />
 		</a>
 		<span
@@ -34,12 +34,14 @@
 	<div class="navbar-menu" class:is-active={isOpen}>
 		<div class="navbar-start">
 			<a
+				ref="prefetch"
 				href="/"
 				class="navbar-item px-5"
 				class:is-active={segment === undefined}>
 				Home
 			</a>
 			<a
+				ref="prefetch"
 				href="/about"
 				class="navbar-item px-5"
 				class:is-active={segment === 'about'}>

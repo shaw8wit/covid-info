@@ -33,7 +33,7 @@
     <title>Covid Tracker Info - {country}</title>
 </svelte:head>
 
-<div class="section header">
+<div class="section header mt-5">
     <div class="container">
         <h1>Covid 19 - {country.charAt(0).toUpperCase() + country.slice(1)}</h1>
     </div>

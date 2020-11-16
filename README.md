@@ -1,15 +1,23 @@
 # Covid-info
 
-Shows the covid related stats from around the world.
+Shows the covid19 related stats from around the world.
 
-## Built with:
+## Use
 
-+ Svelte js
-+ Sapper js
-+ Moment js
-+ Chart js
-+ Bulma
++ Sort countries according to cases, active, deaths and recovered.
++ Search for countries.
++ Edit chart options.
++ Summary of all countries and world.
++ Designed with bulma, momentjs for time editing and chartjs for charts.
 
-### API used:
+## Built with
 
-[covid19api](https://api.covid19api.com/)
++ [Svelte js](https://svelte.dev/)
++ [Sapper js](https://sapper.svelte.dev/)
++ [Moment js](https://momentjs.com/)
++ [Chart js](https://www.chartjs.org/)
++ [Bulma](https://bulma.io/)
+
+### API used
+
+[Coronavirus COVID19 API](https://api.covid19api.com/)

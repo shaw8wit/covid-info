@@ -1,6 +1,6 @@
 # Covid-info
 
-Shows the covid19 related stats from around the world.
+Shows the covid19 stats from around the world.
 
 ## Use
 
@@ -8,7 +8,7 @@ Shows the covid19 related stats from around the world.
 + Search for countries.
 + Edit chart options.
 + Summary of all countries and world.
-+ Designed with bulma, momentjs for time editing and chartjs for charts.
++ Designed with bulma css, momentjs for time editing and chartjs for charts.
 
 ## Built with
 
